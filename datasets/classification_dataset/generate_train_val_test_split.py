@@ -1,3 +1,10 @@
+# =============================================================================
+# Before running this script:
+# 1. Download the original classification dataset from:
+#    https://www.kaggle.com/datasets/memohussein/plant-leaf-healthy-and-disease-dataset/data
+# 2. Extract the dataset.
+# 3. Update the input and output directory paths if necessary.
+# =============================================================================
 import os, shutil, random, hashlib
 from pathlib import Path
 
@@ -5,7 +12,7 @@ from pathlib import Path
 healthy_dir  = Path("plantvillage_two_folder_healthy_disease/healthy")
 diseases_dir = Path("plantvillage_two_folder_healthy_disease/diseases")
 
-out_dir = Path("split_data")  # راح ينشئ train/val/test هنا
+out_dir = Path("/content/plantVillage_split_v2")
 
 train_ratio = 0.70
 val_ratio   = 0.20
@@ -15,18 +22,11 @@ seed = 42
 assert abs(train_ratio + val_ratio + test_ratio - 1.0) < 1e-6
 random.seed(seed)
 
-# ====== إنشاء الفولدرات ======
-if out_dir.exists():
-    shutil.rmtree(out_dir)
-
-for split in ["train", "val", "test"]:
-    (out_dir / split).mkdir(parents=True, exist_ok=True)
-
-# فحص هل الملف صورة
+# ====== فحص هل الملف صورة  ======#
 def is_image(p: Path):
     return p.suffix.lower() in [".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff", ".webp"]
 
-# لتفادي overwrite إذا نفس الاسم يتكرر
+# ====== لتفادي overwrite إذا نفس الاسم يتكرر ======#
 def short_hash(p: Path, block=1024*1024):
     h = hashlib.md5()
     with open(p, "rb") as f:
@@ -80,11 +80,23 @@ def process_root(src_root: Path, title: str):
 
         print(f"{cls.name}: total={len(images)}, train={len(train_imgs)}, val={len(val_imgs)}, test={len(test_imgs)}")
 
-# ====== تنفيذ الدمج ======
-process_root(healthy_dir,  "HEALTHY")
-process_root(diseases_dir, "DISEASES")
+# ====== إنشاء الفولدرات ======
+if(
+    (out_dir / "train").exists()
+    and (out_dir / "val").exists()
+    and (out_dir / "test").exists()
+):
+    print("Split already exists. Using existing split.")
+else:
+  print("Creating train/validation/test split...")
+  for split in ["train", "val", "test"]:
+    (out_dir / split).mkdir(parents=True, exist_ok=True)
 
-print("\n Done. Splits saved in:", out_dir)
+  # ====== تنفيذ الدمج ======
+  process_root(healthy_dir,  "HEALTHY")
+  process_root(diseases_dir, "DISEASES")
+  print("\n Done. Splits saved in:", out_dir)
+
 
 # ====== إحصائيات ======
 def count_images(root: Path):
