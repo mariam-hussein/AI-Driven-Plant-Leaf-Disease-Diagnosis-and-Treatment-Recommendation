@@ -32,7 +32,7 @@ leaf_and_lesion_segmentation_model_for_reviewer/
     └── Result_Lesion_segmentation_model.zip
 ```
 
-## Leaf Segmentation Model (RF-DETRSegNano)
+## RF-DETRSegNano Leaf Segmentation Model
 
 Contains:
 
@@ -44,7 +44,7 @@ Contains:
   - Training logs.
   - Performance metrics.
 
-## Lesion Segmentation Model (RF-DETRSegNano)
+## RF-DETRSegNano Lesion Segmentation Model
 
 Contains:
 
