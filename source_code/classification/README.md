@@ -35,6 +35,7 @@ https://drive.google.com/drive/folders/1gZbtnshBHn9MFxzIOqdI0-LFSZbjVx9M?usp=sha
 
 The Google Drive repository is organized as follows:
 
+```
 classification_model_for_reviewer/
 │
 ├── classification_fusion_model/
@@ -48,6 +49,7 @@ classification_model_for_reviewer/
 └── classification_SwinTiny_model/
     ├── classification_SwinTiny_model (Google Colab Notebook)
     └── Result_SwinTiny_model.zip
+```
     
 
 Each model directory contains:
