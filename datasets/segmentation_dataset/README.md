@@ -8,7 +8,7 @@ Due to GitHub storage limitations, the segmentation datasets used in this work a
 
 The leaf segmentation dataset was generated from the publicly available PlantVillage dataset using a semi-automatic annotation workflow. It is available on Kaggle:
 
-https://www.kaggle.com/datasets/memohussein/plantvillage-leaf-segmentation-manual-annotations
+https://www.kaggle.com/datasets/memohussein/plantvillage-leaf-segmentation-manual-annotations/data
 
 
 The dataset is provided in COCO format and includes training, validation, and testing splits.
