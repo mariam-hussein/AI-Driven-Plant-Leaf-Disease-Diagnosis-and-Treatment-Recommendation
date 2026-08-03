@@ -59,7 +59,7 @@ Each model directory contains:
   - Inference model.
   - Training history.
   - Classification report.
-  - 95% confidence intervals.
+  - Confidence intervals.
   - Confusion matrices.
   - Accuracy, Loss, Precision, Recall, and F1-score curves.
   - Failure case analysis.
