@@ -1,35 +1,62 @@
-# Leaf Segmentation Module
+# Leaf and Lesion Segmentation Models
 
-This directory contains the training and evaluation scripts for the RF-DETRSegNano leaf segmentation model.
+## Description
 
-## Leaf Segmentation Model
 
-- RF-DETRSegNano
+This directory provides access to the segmentation models (RF-DETRSegNano leaf and RF-DETRSegNano lesion) developed in this study.
 
-## Directory Contents
+Two independent segmentation models were implemented for different purposes within the proposed framework:
 
-- `train_leaf_segmentation.py` – Training script for the leaf segmentation model.
-- `evaluate_leaf_segmentation.py` – Evaluation script used to compute segmentation performance, including mAP, Precision, Recall, F1-score, and confusion matrix.
+- **RF-DETRSegNano Leaf Segmentation Model**, used to extract the leaf region from the original image.
 
-## leaf segmentation best Model
+- **RF-DETRSegNano Lesion Segmentation Model**, used to segment disease lesions.
 
-Due to GitHub storage limitations, the best-trained model weights (leaf_segmentation_best.pth) can be downloaded from the following Google Drive folder:
+## Segmentation Models Repository
 
-**Google Drive:**
-https://drive.google.com/drive/folders/1fMPwmNEaPOq8P6NWyboxHJ9dtDS0HnNh?usp=sharing
+Due to GitHub repository size limitations, the trained models and experimental results are available in the following Google Drive repository:
 
-The folder contains:
+https://drive.google.com/drive/folders/1anYgPvBEezlmd5cBRr4NhY5E5DXaWZrv?usp=sharing
 
-- `leaf_segmentation_best.pth` – Best trained RF-DETRSegNano leaf segmentation model.
+The Google Drive repository is organized as follows:
 
-## Evaluation Metrics
+```
+leaf_and_lesion_segmentation_model_for_reviewer/
+│
+├── leaf_segmentation/
+│   ├── leaves_segmentation_model.ipynb
+│   └── Result_Leaves_segmentation_model.zip
+│
+└── lesion_segmentation/
+    ├── Lesion_segmentation_model.ipynb
+    ├── Evaluate_Lesion_segmentation_model.ipynb
+    └── Result_Lesion_segmentation_model.zip
+```
 
-The evaluation script reports:
+## Leaf Segmentation Model (RF-DETRSegNano)
 
-- mAP@50:95
-- mAP@50
-- mAP@75
-- Precision
-- Recall
-- F1-score
-- Confusion Matrix
+Contains:
+
+- Google Colab notebook for training the leaf segmentation model.
+- Compressed experimental results, including:
+  - Trained model checkpoints.
+  - Evaluation outputs.
+  - Prediction results.
+  - Training logs.
+  - Performance metrics.
+
+## Lesion Segmentation Model (RF-DETRSegNano)
+
+Contains:
+
+- Google Colab notebook for training the lesion segmentation model.
+- Google Colab notebook for model evaluation.
+- Compressed experimental results, including:
+  - Trained model checkpoints.
+  - Evaluation outputs.
+  - Prediction results.
+  - Training logs.
+  - Performance metrics.
+
+## Segmentation Datasets
+
+The datasets used to train both RF-DETRSegNano segmentation models are provided separately in the **segmentation_dataset** directory of this repository.
