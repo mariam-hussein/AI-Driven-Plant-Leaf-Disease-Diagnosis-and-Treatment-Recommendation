@@ -1,14 +1,21 @@
-# Classification Module
+# Classification Models
 
-This directory contains the source code for the proposed hybrid CNN–Transformer plant leaf disease classification framework.
 
-## Model Architecture
+## Description
 
-The proposed classification model combines EfficientNet-B0 and Swin-Tiny Transformer through feature fusion. EfficientNet-B0 extracts fine-grained local features, while the Swin-Tiny Transformer captures global contextual representations. The extracted features are concatenated and passed to a fully connected classifier for final disease prediction.
+This directory provides access to the classification component of the proposed framework.
 
-## Training Configuration
 
-- Image size: 224 × 224
+To support the ablation study requested during the review process, three classification models were implemented and evaluated using the same training, validation, and testing split:
+- EfficientNet-B0
+- Swin-Tiny Transformer
+- Proposed CNN–Transformer Fusion (EfficientNet-B0 + Swin-Tiny)
+  
+The fusion model combines local features extracted by EfficientNet-B0 with global contextual features extracted by Swin-Tiny through feature concatenation, followed by a fully connected classifier for final disease prediction.
+
+
+## Common Training Configuration
+All models were trained using identical experimental settings:
 - Batch size: 32
 - Optimizer: AdamW
 - Loss function: Weighted Cross-Entropy Loss
@@ -18,37 +25,40 @@ The proposed classification model combines EfficientNet-B0 and Swin-Tiny Transfo
 - Early stopping patience: 15
 - Random seed: 42
 
-The complete preprocessing and augmentation pipeline is implemented in `train_classification.py`.
 
-## Directory Contents
+## Classification Models Repository
 
-- `train_classification.py` – Training and evaluation script for the proposed classification model.
+Due to GitHub repository size limitations, the complete implementation, trained models, and experimental results are available in the following Google Drive repository:
 
-## Pre-trained Models
-
-Due to GitHub storage limitations, the model files can be downloaded from the following Google Drive folder:
-
-**Google Drive:**
-
-https://drive.google.com/drive/folders/1fMPwmNEaPOq8P6NWyboxHJ9dtDS0HnNh?usp=sharing
-
-The folder contains:
-
-- `classification_best_weight_model.pth` – Best model weights selected according to the highest validation accuracy.
-- `classification_model_inference.pth` – Deployment-ready inference model containing the trained weights together with the class labels and inference configuration.
-
-## Outputs
-
-The training script generates:
-
-- Best trained model
-- Training history
-- Classification report
-- Confusion matrices
-- Accuracy and loss curves
-- Precision, Recall, and F1-score curves
+https://drive.google.com/drive/folders/1gZbtnshBHn9MFxzIOqdI0-LFSZbjVx9M?usp=sharing
 
 
+The Google Drive repository is organized as follows:
 
+classification_model_for_reviewer/
+│
+├── classification_fusion_model/
+│   ├── classification_fusion_model_v2 (Google Colab Notebook)
+│   └── Result_fusion_model_v2.zip
+│
+├── classification_EfficientNetB0_model/
+│   ├── classification_EffB0_model (Google Colab Notebook)
+│   └── Result_EfficientNetB0_model.zip
+│
+└── classification_SwinTiny_model/
+    ├── classification_SwinTiny_model (Google Colab Notebook)
+    └── Result_SwinTiny_model.zip
+    
 
-
+Each model directory contains:
+- Google Colab notebook implementing the corresponding model.
+- Compressed experimental results, including:
+  - Best trained model.
+  - Inference model.
+  - Training history.
+  - Classification report.
+  - 95% confidence intervals.
+  - Confusion matrices.
+  - Accuracy, Loss, Precision, Recall, and F1-score curves.
+  - Failure case analysis.
+  - Representative failure cases.
